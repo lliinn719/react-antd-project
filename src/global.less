@@ -1,11 +1,15 @@
+@white-color:#ffffff;
+
 html,
 body,
 #root {
   height: 100%;
 }
 
+
 body {
   margin: 0;
+  background-color: @white-color;
 }
 
 * {
@@ -14,106 +18,16 @@ body {
   font-family:'Microsoft JhengHei', '微軟正黑體';
 }
 
-a,a:active, a:hover{
-  color: #B58463;
+/* layout */
+
+/* header */
+.ant-layout-header{
+  padding: 0;
 }
 
-// Input
-.inputStyle:focus, .inputStyle-focused ,.ant-input:hover ,.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover{
-  border-color:#B58463;
-  box-shadow:0 0 0 2px rgba(181, 132, 99, 0.2);
-}
-.ant-input-affix-wrapper:focus,
-.ant-input-affix-wrapper-focused{
-  border-color:#B58463;
-  box-shadow:0 0 0 2px rgba(181, 132, 99, 0.2);
-}
-.ant-divider-horizontal.ant-divider-with-text {
-  border: #966d52;
+/* content */
+.ant-layout-content{
+  min-height: 100vh;
 }
 
-//Button
-.ant-btn-primary{
-  background-color: #B58463;
-  border-color:#B58463;
-}
-.ant-btn-primary:hover, .ant-btn-primary:focus{
-  border-color:#B58463;
-  background-color: #966d52;
-}
-.ant-btn{
-  span{
-    letter-spacing: 0.125rem;
-  }
-}
-.ant-btn:hover, .ant-btn:focus{
-  color: #fff;
-  border-color:#B58463;
-  box-shadow:0 0 0 2px rgba(181, 132, 99, 0.2);
-  text-shadow: 0 0 0 2px black;
-}
-
-//Upload
-.ant-upload.ant-upload-drag:not(.ant-upload-disabled):hover{
-  border-color:#B58463;
-}
-
-.ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon{
-  color: #B58463;
-}
-.ant-upload.ant-upload-select-picture-card:hover{
-  border-color:#B58463;
-  background-color: rgba(181, 132, 99, 0.2);
-}
-.ant-upload{
-  color: #966d52;
-}
-.ant-upload.ant-upload-select-picture-card{
-  margin: 1rem auto;
-}
-
-//Carousel
-.ant-carousel{
-  width: 100%;
-}
-.ant-carousel .slick-dots li button{
-  background-color: rgba(217, 174, 148, 0.8);
-}
-.ant-carousel .slick-dots li.slick-active button{
-  background-color: #D9AE94;
-}
-
-//Radio
-.ant-radio-wrapper:hover .ant-radio, .ant-radio:hover .ant-radio-inner, .ant-radio-input:focus + .ant-radio-inner,.ant-radio-checked .ant-radio-inner{
-  border-color: #966d52;
-  :hover{
-    border-color: #966d52;
-  }
-}
-
-//Select
-.ant-select:not(.ant-select-disabled):hover .ant-select-selector,.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector{
-  border-color: #966d52;
-  box-shadow:0 0 0 2px rgba(181, 132, 99, 0.2);
-}
-.ant-radio-input:focus + .ant-radio-inner{
-  box-shadow:0 0 0 2px rgba(181, 132, 99, 0.2);
-}
-.ant-radio-inner::after{
-  background-color: #B58463;
-}
-
-//DatePicker
-.ant-picker-focused{
-  border-color: #966d52;
-  box-shadow:0 0 0 2px rgba(181, 132, 99, 0.2);
-}
-.ant-picker-today-btn{
-  color: #966d52;
-}
-.ant-picker:hover, .ant-picker-focused,.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before{
-  border-color: #966d52;
-}
-.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner, .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner, .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner{
-  background-color: #B58463;
-}
+/* footer */

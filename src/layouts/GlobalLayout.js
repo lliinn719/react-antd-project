@@ -1,14 +1,11 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import withRouter from 'umi/withRouter';
 import { connect } from 'dva';
-import { Button, Layout, Menu } from 'antd';
+import { Layout, Menu } from 'antd';
 import './GlobalLayout.less';
 import images from '../theme/images';
-import { UserOutlined } from '@ant-design/icons';
-import { Link } from 'dva/router';
-
+import { HomeOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+const { SubMenu } = Menu;
 const { Header, Content, Footer } = Layout;
 
 const mapStateToProps = state => {
@@ -29,66 +26,53 @@ export default withRouter(
     mapDispatchToProps,
   )(
     class GlobalLayout extends Component {
-      state = {};
+      state = {
+        current: 'mail',
+      };
+
+      handleClick = e => {
+        console.log('click ', e);
+        this.setState({ current: e.key });
+      };
 
       componentDidMount = () => {};
 
       render() {
         const { children } = this.props;
+        const { current } = this.state;
         return (
-          <Layout className="global-layout">
+          <Layout>
             <Header>
-              <Menu mode="horizontal">
-                <Menu.Item key="logo">
-                  <div className="logoBlock">
-                    <img src={images.logo} className="logo"></img>
-                    <Link to="/">
-                      <h3 className="title">Baby Journal</h3>
-                    </Link>
-                  </div>
+              <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
+                <Menu.Item key="mail" icon={<HomeOutlined />}>
+                  首頁
                 </Menu.Item>
-                <Menu.Item key="babyList">
-                  <Link to="/babyList">
-                    <h4 className="navbarText">寶寶列表</h4>
-                  </Link>
+                <Menu.Item key="app" disabled icon={<AppstoreOutlined />}>
+                  關於我們
                 </Menu.Item>
-                <Menu.Item key="functionList">
-                  <h4 className="navbarText">功能列表</h4>
-                </Menu.Item>
-                <Menu.Item key="contactBook">
-                  <h4 className="navbarText">聯絡簿</h4>
-                </Menu.Item>
-                <Menu.Item key="noviceTeaching">
-                  <Link to="/instruction">
-                    <h4 className="navbarText">新手教學</h4>
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="contactUs">
-                  <h4 className="navbarText">聯繫我們</h4>
-                </Menu.Item>
-                <Menu.Item key="commonProblem">
-                  <h4 className="navbarText">常見問題</h4>
-                </Menu.Item>
-                <Menu.Item key="userIcon">
-                  <h4 className="navbarText">
-                    <Link to="/edit">
-                      <UserOutlined style={{ fontSize: '1.25rem' }} />
-                    </Link>
-                  </h4>
-                </Menu.Item>
-                <Menu.Item key="commonProblem">
-                  <Link to="/login">
-                    <Button type="primary">登入</Button>
-                  </Link>
+                <SubMenu
+                  key="SubMenu"
+                  icon={<SettingOutlined />}
+                  title="Navigation Three - Submenu"
+                >
+                  <Menu.ItemGroup title="Item 1">
+                    <Menu.Item key="setting:1">Option 1</Menu.Item>
+                    <Menu.Item key="setting:2">Option 2</Menu.Item>
+                  </Menu.ItemGroup>
+                  <Menu.ItemGroup title="Item 2">
+                    <Menu.Item key="setting:3">Option 3</Menu.Item>
+                    <Menu.Item key="setting:4">Option 4</Menu.Item>
+                  </Menu.ItemGroup>
+                </SubMenu>
+                <Menu.Item key="alipay">
+                  <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+                    Navigation Four - Link
+                  </a>
                 </Menu.Item>
               </Menu>
             </Header>
-            {children}
-            <Footer>
-              <div>
-                <h4 className="footerText">@BABY團隊版權所有</h4>
-              </div>
-            </Footer>
+            <Content>{children}</Content>
+            <Footer></Footer>
           </Layout>
         );
       }
